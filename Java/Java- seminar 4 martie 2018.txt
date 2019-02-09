@@ -1,0 +1,138 @@
+cosmin.cartas@csie.ase.ro
+razvan.marales@csie.ase.ro
+
+acs.ase.ro/java -> GITHUB.COM/CRITOMA/JAVASE
+laboratoare ID: -> https://github.com/kenyz0r/JAVA-LABS
+Elearning platform ism.ase.ro
+
+
+cheie acces 4961
+
+examen 60%  - minim 5 in examen
+tc 40%
+- proiect (20%)
+- test grila (20%) online
+
+Eclipse Oxygen
+jdk 8, 9
+
+
+Limbaj de programare multiparadigma, care spre deosebire scrii codul o data run everywhere.
+prin un container care contine un set de librarii si care contine un cod proprietar java systems.
+
+*.java -> compilate cun ajutorul comilatorului => fisiere.class => bytecode
+
+In fct de sistemul de operare o sa avem cate un jvm (java virtual machine) -> specific fiecarei platforme.
+
+Cand rulam un program JAVA (java runtime edition o sa caute : -> public static void main
+
+exista mai multe editii -> Java Card -> Java ME Embedded (telefoane Nokia - nu mai este folosit)
+
+Noi invatam Java Se.
+
+pentru a rula un program java : avem nevoie de jre (contine jvm + tool-urile de dezvoltare).
+
+
+
+
+
+Tipuri de date:
+boolean - 1 bit
+byte - 8 biti
+short - 2 bytes
+char - 2 bytes
+integer - 4 bytes
+float - 4 bytes
+long - 8 bytes
+double - 8 bytes
+
+
+Operatori de comparare:
+<, <=, >, >=, diferit
+
+Structuri de control, if statements, switch
+
+
+importare proiect 
+
+
+
+
+
+
+- librarii (archives) - pentru a folosi clasa in alt proiect
+File>Export>Java>Jarfile>next> aleg fi
+
+
+proiect > properties> calea de mac (remove)> add external jars> ma duc pe folderul meu > 
+
+
+SUPER pentru a apela constructorul fara parametri sau cu parametri(la cel cu parametri trebuie sa trecem si atributele)
++ folosit la concatenare de stringuri
+
+
+in Java - se poate extinde doar o clasa si pentru a pastra mostenirile multiple in Java se foloseste de interfete.
+
+este:
+
+- poate sa contina si constante
+- cu ce ne ajuta : putem schimba comportamentul unei metode abstracte
+
+(metodele reprezinta comportamentul)
+
+
+set-ul contine valori unice
+ii specificam setului modif= prin care comparam unicitatea lor este prin suprascrierea unei metode (equales)- dar nu ajunge numai equals , mai trebuie folosita metoda hashcode.#
+
+cheia pentru map trebuie sa fie intotdeauna unica.
+
+
+
+String s1 = "Andrei";
+String s2 = "Gigel";
+
+diferenta intre if (s1==s2)  si if(s1.equals(s2)
+
+stringurile nu trebuie comparate cu ==!!!
+trebuie neaparat folosit equals
+== se foloseste doar tipuri primitive de date (float-uri, integer, double-uri, etc.).
+
+la primul if verifica pozitiile la al doilea verifica valorile
+
+
+
+Integer in = 40;
+int i=in;
+
+aceasta este un boxing (incapsuleaza primitivele)
+si cand 
+
+
+
+functional interfaces si java strings - interfata care teoretic are functional interface, dar proactic orice interfata 1 singura metoda ce returneaza (de exemplu un int cu 2 parametri).
+
+
+fiecare lambda function representa o functie anonima
+nu are vizibilitate in alta parte
+memoria se aloca doar unde o folosim
+este foarte eficiente
+
+depistam lambda functiona prin intermediul operatorului acesta -> (care arata ca o sageata
+daca avem 1 linie scriem asa
+ComputingType add = (a,b) -> a+b; //echivalent return a+b
+daca am mai multe linii scriu cu acolada
+
+
+ComputingType prod = (a,b) -> {
+Sytem.out.println("S-a apelat produsul");
+return a*b;
+}
+ComputingTypeImpl type = new ComputingTypeImpl();
+System.out.println(type.compute(30, 10, prod));
+
+
+
+
+cum implementez in main un functionalInterface
+
+MessageSender
