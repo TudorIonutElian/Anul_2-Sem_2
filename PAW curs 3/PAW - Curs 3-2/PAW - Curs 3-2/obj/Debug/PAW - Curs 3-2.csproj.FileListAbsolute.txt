@@ -1,0 +1,8 @@
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\bin\Debug\PAW - Curs 3-2.exe.config
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\bin\Debug\PAW - Curs 3-2.exe
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\bin\Debug\PAW - Curs 3-2.pdb
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\obj\Debug\PAW___Curs_3_2.Form1.resources
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\obj\Debug\PAW___Curs_3_2.Properties.Resources.resources
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\obj\Debug\PAW - Curs 3-2.csproj.GenerateResource.Cache
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\obj\Debug\PAW - Curs 3-2.exe
+c:\users\stud\documents\visual studio 2013\Projects\PAW - Curs 3-2\PAW - Curs 3-2\obj\Debug\PAW - Curs 3-2.pdb
