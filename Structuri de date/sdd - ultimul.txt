@@ -1,0 +1,137 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct Angajat {
+	int marca;
+	char* nume;
+	float salariu;
+	int varsta;
+};
+struct nod {
+	Angajat info;
+	nod* prev;
+	nod* next;
+};
+struct LDI {
+	nod* prim;
+	nod* ultim;
+};
+Angajat initializareAngajat(int marca, char* nume, float salariu, int varsta) {
+	Angajat angajat;
+	char buffer[20];
+	angajat.marca = marca;
+	angajat.nume = (char *)malloc(sizeof(char) * (strlen(buffer) + 1));
+	strcpy(angajat.nume, nume);
+	angajat.salariu = salariu;
+	angajat.varsta = varsta;
+	return angajat;
+}
+void afisareAngajat(Angajat angajat) {
+	printf("%d, %s, %5.2f, %d \n", angajat.marca, angajat.nume, angajat.salariu, angajat.varsta);
+}
+Angajat* initializareCompanie(int nr) {
+
+	FILE *f = fopen("input.txt", "r");
+	int i = 0;
+	Angajat* vector;
+	vector = (Angajat *)malloc(sizeof(Angajat) * (nr + 1));
+	int marca;
+	char nume[20];
+	float salariu;
+	int varsta;
+
+	fscanf(f, "%d", &nr);
+	for (int i = 0; i<nr; i++) {
+		fscanf(f, "%d %s %f %d", &marca, &nume, &salariu, &varsta);
+		//printf("%d %s %5.2f %d\n", marca, nume, salariu, varsta);
+		vector[i] = initializareAngajat(marca, nume, salariu, varsta);
+		//afisareAngajat(vector[i]);
+	}
+	return vector;
+}
+
+Angajat deepCopy(Angajat angajat) {
+	Angajat temp;
+	temp.marca = angajat.marca;
+	temp.nume = (char*)malloc(sizeof(char) * 21);
+	strcpy(temp.nume, angajat.nume);
+	temp.salariu = angajat.salariu;
+	temp.varsta = angajat.varsta;
+	return temp;
+}
+
+void insereazaAngajat(LDI* lista, Angajat angajat) {
+	if (lista->prim == NULL) {
+		lista->prim = (nod*)malloc(sizeof(nod));
+		lista->prim->info = deepCopy(angajat);
+		lista->prim->next = NULL;
+		lista->prim->prev = NULL;
+		lista->ultim = lista->prim;
+	}
+	else {
+
+	}
+}
+
+LDI initializareLista()
+{
+	LDI lista;
+	lista.prim = NULL;
+	lista.ultim = NULL;
+	return lista;
+}
+
+LDI insereazaAngajatInLista(LDI lista, Angajat angajat) {
+		nod*nou = (nod*)malloc(sizeof(nod));
+		nou->info = deepCopy(angajat);
+		nou->prev = lista.ultim;
+		nou->next = NULL;
+		if (lista.ultim)
+			lista.ultim->next = nou;
+		else{
+			lista.prim = nou;
+		}
+		lista.ultim = nou;
+		return lista;
+}
+
+LDI transforma(Angajat* companie, int nr) {
+	LDI lista = initializareLista();
+	for (int i = 0; i < nr; i++) {
+		lista = insereazaAngajatInLista(lista, companie[i]);
+	}
+	return lista;
+}
+
+void afisareCompanie(Angajat *companie) {
+	for (int i = 0; i < 4; i++) {
+		afisareAngajat(companie[i]);
+	}
+}
+
+void afisareLista(LDI lista)
+{
+	if (lista.prim)
+	{
+		while (lista.ultim)
+		{
+			afisareAngajat(lista.ultim->info);
+			lista.ultim = lista.ultim->prev;
+		}
+	}
+}
+
+int main() {
+	Angajat angajat = initializareAngajat(11, "angajat1", 2222, 22);
+	afisareAngajat(angajat);
+
+	Angajat* companie;
+	companie = (Angajat*)malloc(sizeof(Angajat)*4);
+	companie = initializareCompanie(4);
+	afisareCompanie(companie);
+
+	LDI lista;
+	lista = transforma(companie, 4);
+	afisareLista(lista);
+}

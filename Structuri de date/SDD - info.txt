@@ -1,0 +1,8 @@
+SDD
+
+tema:
+
+data incarcare
+data predare
+
+cerinte
