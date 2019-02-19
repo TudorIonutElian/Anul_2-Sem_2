@@ -42,7 +42,7 @@ void main() {
   Muzeu muzeu;
   char buffer[20]; // 
   printf ("Nume muzeu: ");                                             //indic user-ului ca trebuie sa introduca numele unui muzeu
-  scanf_s("%s", buffer);
+  scanf_s("%s", buffer, 20);
   muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // alocam spatiu numelui muzeului
   strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
 }
@@ -55,7 +55,7 @@ void main() {
   Muzeu muzeu;
   char buffer[20]; // 
   printf ("Nume muzeu: ");                                             //indic user-ului ca trebuie sa introduca numele unui muzeu
-  scanf_s("%s", buffer);
+  scanf_s("%s", buffer, 20);
   muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // alocam spatiu numelui muzeului
   strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
   printf ("Pret bilet intrare: ");
@@ -81,6 +81,36 @@ void main() {
   printf ("Pret bilet intrare: ");
   scanf_s ("%f", &muzeu.pret_bilet);
   printf ("Numar vizitatori: ");
-  scanf_s ("%f", &muzeu.nr_vizitatori);
+  scanf_s ("%d", &muzeu.nr_vizitatori);
 }
+```
+
+
+Ca sa verificam ca acest muzeu a fost citit corect il afisam.
+
+```c
+void main() {
+  Muzeu muzeu;
+  char buffer[20]; // 
+  printf ("Nume muzeu: ");                                             //indic user-ului ca trebuie sa introduca numele unui muzeu
+  scanf_s("%s", buffer, 20);
+  muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // alocam spatiu numelui muzeului
+  strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
+  printf ("Pret bilet intrare: ");
+  scanf_s ("%f", &muzeu.pret_bilet); // nu mai dam lungimea pt ca citim un float
+  printf ("Numar vizitatori: ");
+  scanf_s ("%d", &muzeu.nr_vizitatori); // nu mai dam lungimea pt ca citim un int
+  
+  // citesc muzeul
+  printf ("Muzeul %s are %d vizitatori, iar biletul costa %5.2f lei\n", muzeu.nume, muzeu.nr_vizitatori, muzeu.pret_bilet);
+}
+```
+output
+``` c
+Nume muzeu: Antipa
+Pret bilet intrare: 30
+Numar vizitatori: 500
+
+Muzeul Antipa are 30 vizitatori, iar biletul costa 30.00 lei.
+
 ```
