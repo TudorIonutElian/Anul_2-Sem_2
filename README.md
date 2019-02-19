@@ -5,6 +5,8 @@
 
 [LINK ZAMFIROIU - GREEN CODE](https://www.youtube.com/channel/UCdEmwULIisEidw3QJuHdotQ/videos)
 
+
+
 tutorial 7 - structura 
 ----------------------
 
@@ -112,5 +114,64 @@ Pret bilet intrare: 30
 Numar vizitatori: 500
 
 Muzeul Antipa are 30 vizitatori, iar biletul costa 30.00 lei.
+
+```
+
+cod complet tutorial 7
+```c
+#include <iostream>
+
+struct Muzeu{
+  char* nume;
+  float pret_bilet;
+  int nr_vizitatori;
+
+void main() {
+  Muzeu muzeu;
+  char buffer[20]; // 
+  printf ("Nume muzeu: ");                                             //indic user-ului ca trebuie sa introduca numele unui muzeu
+  scanf_s("%s", buffer, 20);
+  muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // alocam spatiu numelui muzeului
+  strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
+  printf ("Pret bilet intrare: ");
+  scanf_s ("%f", &muzeu.pret_bilet); // nu mai dam lungimea pt ca citim un float
+  printf ("Numar vizitatori: ");
+  scanf_s ("%d", &muzeu.nr_vizitatori); // nu mai dam lungimea pt ca citim un int
+  
+  // citesc muzeul
+  printf ("Muzeul %s are %d vizitatori, iar biletul costa %5.2f lei\n", muzeu.nume, muzeu.nr_vizitatori, muzeu.pret_bilet);
+  
+  // sterg spatiul alocat dinamic pentru nume muzeu
+  
+}
+};
+
+
+
+```
+
+
+tutorial 8 - Metode de citire a unui articol de tip Muzeu. 
+----------------------
+1) facem o functie de citire
+1.1) Ce va returna? un Muzeu
+1.2) nume metoda/functie citireMuzeu
+
+
+```c
+Muzeu citireMuzeu() {
+  Muzeu muzeu;
+  char buffer[20]; // 
+  printf ("Nume muzeu: ");                                             //indic user-ului ca trebuie sa introduca numele unui muzeu
+  scanf_s("%s", buffer, 20);
+  muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // alocam spatiu numelui muzeului
+  strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
+  printf ("Pret bilet intrare: ");
+  scanf_s ("%f", &muzeu.pret_bilet); // nu mai dam lungimea pt ca citim un float
+  printf ("Numar vizitatori: ");
+  scanf_s ("%d", &muzeu.nr_vizitatori); // nu mai dam lungimea pt ca citim un int
+  
+  return muzeu;
+}
 
 ```
