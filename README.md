@@ -34,7 +34,7 @@ void main() {
 Ca sa citim acest muzeu trebuie sa citim fiecare caracteristica in parte (nume, pret_bilet, nr_vizitatori).
 
 Ca sa citim numele acestui muzeu trebuie sa:
-1) alocam spatiu (dar nu stim cat spatiu sa alocam)
+1) alocam spatiu (dar nu stim cat spatiu sa alocam)  
 1.1) ne luam un buffer alocat static.  
 1.2) vom citi in acest buffer.  
 1.3) vom aloca spatiu pe baza acestui buffer.  
