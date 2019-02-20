@@ -35,17 +35,17 @@ Ca sa citim acest muzeu trebuie sa citim fiecare caracteristica in parte (nume, 
 
 Ca sa citim numele acestui muzeu trebuie sa:
 1) alocam spatiu (dar nu stim cat spatiu sa alocam)
-1.1) ne luam un buffer alocat static
-1.2) vom citi in acest buffer
-1.3) vom aloca spatiu pe baza acestui buffer
+1.1) ne luam un buffer alocat static.  
+1.2) vom citi in acest buffer.  
+1.3) vom aloca spatiu pe baza acestui buffer.  
 
 ```c
 void main() {
   Muzeu muzeu;
-  char buffer[20]; // 
-  printf ("Nume muzeu: ");                                             //indic user-ului ca trebuie sa introduca numele unui muzeu
-  scanf_s("%s", buffer, 20);
-  muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // alocam spatiu numelui muzeului
+  char buffer[20]; // 1.1
+  printf ("Nume muzeu: ");   // indic user-ului ca trebuie sa introduca numele unui muzeu
+  scanf_s("%s", buffer, 20); // 1.2
+  muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // 1.3
   strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
 }
 ```
