@@ -155,9 +155,9 @@ void main() {
 
 tutorial 8 - Metode de citire a unui articol de tip Muzeu. 
 ----------------------
-1) facem o functie de citire  
+1) facem o functie de citire: Muzeu citireMuzeu()  
 1.1) Ce va returna? un Muzeu  
-1.2) nume metoda/functie citireMuzeu  
+1.2) nume metoda/functie citireMuzeu()    
 
 
 ```c
