@@ -60,6 +60,7 @@ void main() {
   scanf_s("%s", buffer, 20);
   muzeu.nume = (char*) malloc (sizeof(char) * (strlen(buffer) + 1));  // alocam spatiu numelui muzeului
   strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
+  // citesc pret_bilet
   printf ("Pret bilet intrare: ");
   scanf_s ("%f", &muzeu.pret_bilet);
 }
@@ -82,6 +83,7 @@ void main() {
   strcpy_s (muzeu.nume, strlen(buffer) + 1, buffer);
   printf ("Pret bilet intrare: ");
   scanf_s ("%f", &muzeu.pret_bilet);
+  // citesc numar_vizitatori
   printf ("Numar vizitatori: ");
   scanf_s ("%d", &muzeu.nr_vizitatori);
 }
