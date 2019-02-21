@@ -223,6 +223,7 @@ struct Muzeu{
   char* nume;
   float pret_bilet;
   int nr_vizitatori;
+};
   
 Muzeu citireMuzeu() {
   Muzeu muzeu;
