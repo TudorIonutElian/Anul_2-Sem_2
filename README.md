@@ -155,6 +155,8 @@ void main() {
 
 tutorial 8 - Metode de citire a unui articol de tip Muzeu. 
 ----------------------
+I) prin valoare
+---------------
 1) facem o functie de citire: Muzeu citireMuzeu()  
 1.1) Ce va returna? un Muzeu  
 1.2) nume metoda/functie citireMuzeu()    
@@ -252,4 +254,21 @@ Muzeu citireMuzeu() {
 
 ```
 
+-----------------
+Functia de citire - alta metoda (transmitere prin parametru).   
+-----------------
+II) prin parametru
+------------------
+1. creem o noua metoda citireMuzeuPrinParametru()  
+2. va fi de tip void (nu are tip returnat)  
+3. ca sa transmitem un parametru, sa fie modificat in cadrul functiei, nu vom transmite prin valoare. 
+**DACA** transmitem prin valoare se va face o copie pe stiva de memorie a functiei citireMuzeuPrinParametru() iar la sfarsitul functiei stiva se va sterge, iar ceea ce eu am citit nu o sa se modifice. 
+**SOLUTIE:** transmitem muzeul prin pointer.
+
+```c
+  void citireMuzeuPrinParametru (Muzeu *pMuzeu){
+//add code here
+  }
+
+```
 
