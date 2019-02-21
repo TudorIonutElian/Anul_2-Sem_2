@@ -145,7 +145,7 @@ void main() {
   printf ("Muzeul %s are %d vizitatori, iar biletul costa %5.2f lei\n", muzeu.nume, muzeu.nr_vizitatori, muzeu.pret_bilet);
   
   // sterg spatiul alocat dinamic pentru nume muzeu
-  
+  free(muzeu.nume);
 }
 
 
@@ -237,7 +237,7 @@ Muzeu citireMuzeu() {
   scanf_s ("%d", &muzeu.nr_vizitatori); // nu mai dam lungimea pt ca citim un int
   
   return muzeu;
-};
+}
 
  void afisareMuzeu (Muzeu muzeu){
     printf ("Muzeul %s are %d vizitatori, iar biletul costa %5.2f lei\n", muzeu.nume, muzeu.nr_vizitatori, muzeu.pret_bilet);
