@@ -325,3 +325,10 @@ Stive si cozi
 stiva (last in first out) ultimul element introdus este primul pe care il scot. Lucrez la un capat. daca fac inserare la inceput fac extragere la inceput; daca fac inserare la sfarsit extragerea o fac tot la sfarsit.
 
 coada (first in first out) fac inserare la un capat automat extragerea la sfarsit , sau invers.
+
+
+23/24 februarie intalnire (ne anunta pe platforma)
+13/14 aprilie o noua intalnire
+
+
+La arbori binari se salveaza adresa nodului root. Ce e la adresa 
