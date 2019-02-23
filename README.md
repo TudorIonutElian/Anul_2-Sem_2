@@ -272,3 +272,17 @@ II) prin parametru
 
 ```
 
+tutorial 10 - Lista Simplu Inlantuita - creare nod - inserare la inceput
+------------------------------------------------------------------------
+
+Lista spre deosebire de vector nu ocupa o zona contigua de memorie. De aceea pentru a avea acces de la un nod la celalalt, trebuie sa retinem adresa urmatorului nod. La vector nu este nevoie sa se retina adresa urmatorului element deoarece vin unul dupa altul. Ma puteam duce la element direct din memorie.  
+  
+Lista, neavand o zona contigua de memorie eu trebuie sa retin adresa urmatorului nod pentru a sti cum sa ajung la adresa fiecarui nod.  
+  
+De aceea, o lista este o insiruire de noduri, si fiecare nod va avea o structura compusa din:  
+ - informatia utila. 
+ - adresa urmatorului nod. 
+ 
+Aceasta va fi lista simplu inlantuita.
+
+Vom avea o structura
