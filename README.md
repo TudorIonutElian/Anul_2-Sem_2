@@ -286,3 +286,42 @@ De aceea, o lista este o insiruire de noduri, si fiecare nod va avea o structura
 Aceasta va fi lista simplu inlantuita.
 
 Vom avea o structura
+
+
+
+
+-- inserare la mijloc?? da fac
+while (P-> adr-> info < inf(8)
+2) creez un nou nod, info utila 8
+3) nu -> adr = p-> adr
+4) p-> adr = nou
+
+
+stergere elemente
+1) ne pozitionam pe nodul anterior nodului de sters
+2) conditia -> daca nodul urmatoar are valoarea noastra
+3) salvam adresa intr-un aux
+4) faci legatura
+5) apoi sterg
+
+liste duble (presupune sa aiba si adresa nodului precedent)
+Daca vrem sa inseram la inceput
+1) creem nodul nou
+2) precedentul este  null
+3) nextul  pointeaza catre cap
+4) previous de la cap pointeaza catre adresa nodului nou
+5) se mai adauga un nod in care salvam doar adresele de inceput si de sfarsit
+
+inserare la mijloc
+
+extragere
+1) determinam mai intai nodul, ne oprim exact pe nodul pe care vreau sa il extrag
+2) trebuie sa fac legaturile 
+
+
+
+Stive si cozi
+-----------------
+stiva (last in first out) ultimul element introdus este primul pe care il scot. Lucrez la un capat. daca fac inserare la inceput fac extragere la inceput; daca fac inserare la sfarsit extragerea o fac tot la sfarsit.
+
+coada (first in first out) fac inserare la un capat automat extragerea la sfarsit , sau invers.
