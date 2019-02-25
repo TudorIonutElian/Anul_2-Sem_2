@@ -303,8 +303,8 @@ Dar fiecare nod trebuie sa aiba si adresa urmatorului nod. Voi avea un nod, dar 
 
 ```c
 struct nod {
-Muzeu informatieUtila;
-nod* next;
+  Muzeu informatieUtila;
+  nod* next;
 };
 ```
 
