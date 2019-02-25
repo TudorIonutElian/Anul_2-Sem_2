@@ -277,7 +277,7 @@ tutorial 10 - Lista Simplu Inlantuita - creare nod - inserare la inceput
 
 Lista spre deosebire de vector nu ocupa o zona contigua de memorie. De aceea pentru a avea acces de la un nod la celalalt, trebuie sa retinem adresa urmatorului nod. La vector nu este nevoie sa se retina adresa urmatorului element deoarece vin unul dupa altul. Ma puteam duce la element direct din memorie.  
   
-Lista, neavand o zona contigua de memorie eu trebuie sa retin adresa urmatorului nod pentru a sti cum sa ajung la adresa fiecarui nod.  
+Lista, neavand o zona contigua de memorie eu trebuie sa retin adresa urmatorului nod pentru a sti cum sa ajung la fiecare nod.  
   
 De aceea, o lista este o insiruire de noduri, si fiecare nod va avea o structura compusa din:  
  - informatia utila. 
@@ -285,12 +285,37 @@ De aceea, o lista este o insiruire de noduri, si fiecare nod va avea o structura
  
 Aceasta va fi lista simplu inlantuita.
 
-Vom avea o structura
+Vom avea o structura: 
+
+```c
+struct
+```
+
+o vom numi chiar nod
+
+```c
+struct nod
+```
+
+In aceasta structura noi vom avea informatia utila: structura Muzeu.  
+Deci vom avea un Muzeu pe care il vom numi "info". (eu l-am numit informatieUtila).  
+Dar fiecare nod trebuie sa aiba si adresa urmatorului nod. Voi avea un nod, dar ma intereseaza adresa acestuia.  
+
+```c
+struct nod {
+Muzeu informatieUtila;
+nod* next;
+};
+```
 
 
 
 
--- inserare la mijloc?? da fac
+
+
+----------------------------------------------------------------------------------------------
+
+-- inserare la mijloc
 while (P-> adr-> info < inf(8)
 2) creez un nou nod, info utila 8
 3) nu -> adr = p-> adr
