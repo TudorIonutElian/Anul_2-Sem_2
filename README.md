@@ -485,18 +485,109 @@ tutorial 10 - Vector alocat dinamic cu obiecte de tip Muzeu
 	
 	```c
 		printf("Numar muzee: "); 
-		scanf("%d", &numar_muzee);
+		scanf("%d", &numarMuzee);
 	```
 4. Aloc spatiu. Acum stiu cata memorie trebuie sa aloc.
 ```c
-	pVectorMuzee=(Muzeu*)malloc(sizeof(Muzeu) * numarMuzee));
+	pVectorMuzee=(Muzeu*)malloc(sizeof(Muzeu) * numarMuzee);
+```
+5. Incep sa citesc elementele
+
+```c
+	for (int i = 0; i < numarMuzee; i++{
+		pVectorMuzee[i] = citireMuzee();
+	}
+```
+6. Afisez muzeele citite (parcurg vectorul si apelez metoda de afisare)  
+```c
+	for (int i = 0; i < numarMuzee; i++){
+		afisareMuzeu(pVectorMuzee[i]);
+	}
+```
+7. Dupa ce am terminat lucrul cu vectorul meu trebuie sa dezaloc memoria
+7.1 mai intai dezaloc memoria pentru nume
+
+```c
+	for (int i = 0; i < numarMuzee; i++) {
+		free (pVectorMuzee[i].nume);
+	}
+```
+7.2 apoi dezaloc memoria alocata pentru vector
+
+```c
+	free(pVectorMuzee);
 ```
 
+cod complet tutorial 10
 
+```c
 
+#include <iostream>
 
+struct Muzeu {
+	char* nume;
+	float pret_bilet;
+	int nr_vizitatori;
+};
 
+Muzeu citireMuzeu() {
+	Muzeu muzeu;
+	// citesc muzeu
+	char buffer[20];
+	printf("Nume muzeu: ");
+	scanf("%s", buffer);
+	muzeu.nume = (char*)malloc(sizeof(char)*(strlen(buffer) + 1));
+	strcpy(muzeu.nume, buffer);
+	printf("Pret bilet intrare: ");
+	scanf("%f", &muzeu.pret_bilet);
+	printf("Vizitatori: ");
+	scanf("%d", &muzeu.nr_vizitatori);
 
+	return muzeu; // tip returnat Muzeu
+}
+
+void citireMuzeuPrinParametru(Muzeu *pMuzeu) {
+	char buffer[20];
+	printf("Nume muzeu: ");
+	scanf("%s", buffer);
+	pMuzeu->nume = (char*)malloc(sizeof(char)*(strlen(buffer) + 1));
+	strcpy(pMuzeu->nume, buffer);
+	printf("Pret bilet intrare: ");
+	scanf("%f", &pMuzeu->pret_bilet);
+	printf("Vizitatori: ");
+	scanf("%d", &pMuzeu->nr_vizitatori);
+}
+
+void afisareMuzeu(Muzeu muzeu) {
+	printf("Muzeul %s are %d vizitatori, iar biletul costa %.2f lei\n", muzeu.nume, muzeu.nr_vizitatori, muzeu.pret_bilet);
+}
+
+int main() {
+	//1. declar un pointer la muzeu si il initializez
+	Muzeu* pVectorMuzee = NULL;
+	//2. ii cer userului numarul de muzee de inserat
+	int numarMuzee;
+	printf("Numar muzee: ");
+	scanf("%d", &numarMuzee);
+	//3. aloc spatiu
+	pVectorMuzee = (Muzeu*)malloc(sizeof(Muzeu)*numarMuzee);
+	//4. citesc elementele
+	for (int i = 0; i < numarMuzee; i++) {
+		pVectorMuzee[i] = citireMuzeu();
+	}
+	//5. afisez elementele citite
+	for (int i = 0; i < numarMuzee; i++) {
+		afisareMuzeu(pVectorMuzee[i]);
+	}
+	//6. sterg memoria alocata pentru nume
+	for (int i = 0; i < numarMuzee; i++) {
+		free(pVectorMuzee[i].nume);
+	}
+	//7. sterm memoria alocata pentru vector
+	free(pVectorMuzee);
+
+}
+```
 
 
 
