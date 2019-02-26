@@ -216,7 +216,7 @@ Ca sa nu lasam memory leak-uri, in main stergem spatiul alocat in HEAP lui nume.
   }
 ```
 
-cod complet cu  toate modificarile de mai sus
+cod complet cu toate modificarile de mai sus
 
 ```c
 #include <iostream>
@@ -263,14 +263,110 @@ II) prin parametru
 2. va fi de tip void (nu are tip returnat)  
 3. ca sa transmitem un parametru, sa fie modificat in cadrul functiei, nu vom transmite prin valoare. 
 **DACA** transmitem prin valoare se va face o copie pe stiva de memorie a functiei citireMuzeuPrinParametru() iar la sfarsitul functiei stiva se va sterge, iar ceea ce eu am citit nu o sa se modifice. 
-**SOLUTIE:** transmitem muzeul prin pointer.
+**SOLUTIE:** transmitem muzeul prin pointer:  *pMuzeu  *
+
+Pentru ca am void nu returnez nimic. Nu am nevoie sa returnez nimic si pentru ca pMuzeu fiind primit ca pointer se va face modificarea direct in adresa unde este stocat cel ...
 
 ```c
   void citireMuzeuPrinParametru (Muzeu *pMuzeu){
-//add code here
+    char buffer[20];
+    printf("Nume muzeu");
+    scanf("%s", buffer);
+    pMuzeu->nume = (char*)malloc(sizeof(char)*(strlen(buffer) + 1));
+    strcpy(pMuzeu->nume, buffer);
+    printf("Pret bilet intrare");
+    scanf("%f", &pMuzeu->pret_bilet);
+    printf("Vizitatori: ");
+    scanf("%s", &pMuzeu->nr_vizitatori);
+
+    // nu returnez nimic pentru ca am void
   }
 
 ```
+
+cod complet tutorial 8
+
+``` c
+#include <iostream>
+
+struct Muzeu {
+	char* nume;
+	float pret_bilet;
+	int nr_vizitatori;
+};
+
+Muzeu citireMuzeu() {
+	Muzeu muzeu;
+	// citesc muzeu
+	char buffer[20];
+	printf("Nume muzeu: ");
+	scanf("%s", buffer);
+	muzeu.nume = (char*)malloc(sizeof(char)*(strlen(buffer) + 1));
+	strcpy(muzeu.nume, buffer);
+	printf("Pret bilet intrare: ");
+	scanf("%f", &muzeu.pret_bilet);
+	printf("Vizitatori: ");
+	scanf("%d", &muzeu.nr_vizitatori);
+
+	return muzeu; // tip returnat Muzeu
+}
+
+void citireMuzeuPrinParametru(Muzeu *pMuzeu) {
+	char buffer[20];
+	printf("Nume muzeu: ");
+	scanf("%s", buffer);
+	pMuzeu->nume = (char*)malloc(sizeof(char)*(strlen(buffer) + 1));
+	strcpy(pMuzeu->nume, buffer);
+	printf("Pret bilet intrare: ");
+	scanf("%f", &pMuzeu->pret_bilet);
+	printf("Vizitatori: ");
+	scanf("%d", &pMuzeu->nr_vizitatori);
+}
+
+void afisareMuzeu(Muzeu muzeu) {
+	printf("Muzeul %s are %d vizitatori, iar biletul costa %.2f lei\n", muzeu.nume, muzeu.nr_vizitatori, muzeu.pret_bilet);
+}
+
+int main() {
+	Muzeu muzeu = citireMuzeu();
+	afisareMuzeu(muzeu);
+	free(muzeu.nume); // pentru a nu lasa memory leak.
+	Muzeu muzeu2;
+	citireMuzeuPrinParametru(&muzeu2);
+	afisareMuzeu(muzeu2);
+	free(muzeu2.nume);
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 tutorial 10 - Lista Simplu Inlantuita - creare nod - inserare la inceput
 ------------------------------------------------------------------------
