@@ -339,11 +339,138 @@ int main() {
 
 ```
 
+tutorial 9 - Vector alocat static cu obiecte de tip Muzeu
+----------------------------------------------------------
+
+1) declaram tipul elementelor din vectorul nostru : de tip Muzeu ``` Muzeu ```
+2) numele vectorului meu vectorMuzee ``` vectorMuzee```
+3) ii aloc spatiu pentru 10 muzee ``` vectorMuzee[10]; ```
+
+```c 
+int main() {
+	Muzeu vectorMuzee[10];
+	int numarMuzee = 0;
+	vectorMuzee[0]=citireMuzeu();
+	numarMuzee++;
+	vectorMuzee[1]=citireMuzeu();
+	numarMuzee++;
+	
+	for (int i = 0; i < numarMuzee; i++){
+		afisareMuzeu(vectorMuzee[i]);
+	}
+	
+	for (int i = 0; i < numarMuzee; i++) {
+		free(vectorMuzee[i].nume);
+	}
+}
+
+```
+pot de asemenea sa citesc de la inceput si cate elemente vreau sa citesc
+
+```c
+int main() {
+	Muzeu vectorMuzee[10];
+	int numarMuzee = 0;
+	printf("Numarul de muzee: ");
+	scanf("%d", &numarMuzee);
+	for (int i = 0; i < numarMuzee; i++) {
+		vectorMuzee[i] = citireMuzeu();
+	}
+
+	for (int i = 0; i < numarMuzee; i++) {
+		afisareMuzeu(vectorMuzee[i]);
+	}
+
+	for (int i = 0; i < numarMuzee; i++) {
+		free(vectorMuzee[i].nume);
+	}
+}
+```
+cod complet tutorial 8
+
+```c
+#include <iostream>
+
+struct Muzeu {
+	char* nume;
+	float pret_bilet;
+	int nr_vizitatori;
+};
+
+Muzeu citireMuzeu() {
+	Muzeu muzeu;
+	// citesc muzeu
+	char buffer[20];
+	printf("Nume muzeu: ");
+	scanf("%s", buffer);
+	muzeu.nume = (char*)malloc(sizeof(char)*(strlen(buffer) + 1));
+	strcpy(muzeu.nume, buffer);
+	printf("Pret bilet intrare: ");
+	scanf("%f", &muzeu.pret_bilet);
+	printf("Vizitatori: ");
+	scanf("%d", &muzeu.nr_vizitatori);
+
+	return muzeu; // tip returnat Muzeu
+}
+
+void citireMuzeuPrinParametru(Muzeu *pMuzeu) {
+	char buffer[20];
+	printf("Nume muzeu: ");
+	scanf("%s", buffer);
+	pMuzeu->nume = (char*)malloc(sizeof(char)*(strlen(buffer) + 1));
+	strcpy(pMuzeu->nume, buffer);
+	printf("Pret bilet intrare: ");
+	scanf("%f", &pMuzeu->pret_bilet);
+	printf("Vizitatori: ");
+	scanf("%d", &pMuzeu->nr_vizitatori);
+}
+
+void afisareMuzeu(Muzeu muzeu) {
+	printf("Muzeul %s are %d vizitatori, iar biletul costa %.2f lei\n", muzeu.nume, muzeu.nr_vizitatori, muzeu.pret_bilet);
+}
+
+int main() {
+
+	/*
+		Muzeu vectorMuzee[10];
+		int numarMuzee = 0;
+		vectorMuzee[0]=citireMuzeu();
+		numarMuzee++;
+		vectorMuzee[1]=citireMuzeu();
+		numarMuzee++;
+
+		for (int i = 0; i < numarMuzee; i++){
+			afisareMuzeu(vectorMuzee[i]);
+		}
+
+		for (int i = 0; i < numarMuzee; i++) {
+			free(vectorMuzee[i].nume);
+		}
+	*/
+
+	Muzeu vectorMuzee[10];
+	int numarMuzee = 0;
+	printf("Numarul de muzee: ");
+	scanf("%d", &numarMuzee);
+	for (int i = 0; i < numarMuzee; i++) {
+		vectorMuzee[i] = citireMuzeu();
+	}
+
+	for (int i = 0; i < numarMuzee; i++) {
+		afisareMuzeu(vectorMuzee[i]);
+	}
+
+	for (int i = 0; i < numarMuzee; i++) {
+		free(vectorMuzee[i].nume);
+	}
+}
+
+```
 
 
+Problema la acest vector este ca eu mi-am alocat spatiu pentru 10 elemente. Eu ocup memorie pentru 10 elemente chiar daca eu folosesc 2 sau 3. Folosesc mai multa memorie decat este necesar.
 
-
-
+De accea, in tutorialul urmator vom face vector alocat dinamic.
 
 
 
