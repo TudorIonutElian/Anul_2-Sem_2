@@ -504,19 +504,19 @@ tutorial 10 - Vector alocat dinamic cu obiecte de tip Muzeu
 		afisareMuzeu(pVectorMuzee[i]);
 	}
 ```
-7. Dupa ce am terminat lucrul cu vectorul meu trebuie sa dezaloc memoria
-7.1 mai intai dezaloc memoria pentru nume
+7. Dupa ce am terminat lucrul cu vectorul meu trebuie sa dezaloc memoria  
+	7.1 mai intai dezaloc memoria pentru nume
 
-```c
-	for (int i = 0; i < numarMuzee; i++) {
-		free (pVectorMuzee[i].nume);
-	}
-```
-7.2 apoi dezaloc memoria alocata pentru vector
+	```c
+		for (int i = 0; i < numarMuzee; i++) {
+			free (pVectorMuzee[i].nume);
+		}
+	```
+	7.2 apoi dezaloc memoria alocata pentru vector
 
-```c
-	free(pVectorMuzee);
-```
+	```c
+		free(pVectorMuzee);
+	```
 
 cod complet tutorial 10
 
