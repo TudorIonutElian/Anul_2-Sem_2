@@ -474,6 +474,23 @@ De accea, in tutorialul urmator vom face vector alocat dinamic.
 
 
 
+tutorial 10 - Vector alocat dinamic cu obiecte de tip Muzeu
+----------------------------------------------------------
+
+1. declar un pointer unde o sa pun adresa unde o sa aloc spatiu. Declar un pointer la muzeu, deoarece trebuie sa specific ce fel de adresa o sa am eu acolo. Si o sa am un ``` Muzeu* pVectorMuzee ```.  
+2. Initial il initializez cu NULL  ``` Muzeu* pVectorMuzee = NULL;```.  
+3. Dupa care eu trebuie sa ii aloc spatiu, dar eu trebuie sa stiu pentru cate elemente ii aloc spatiu.  
+	3.1 De aceea declar un ``` int numarMuzee;``` pe care o sa-l citesc de la utilizator.  
+	3.2 Pe care il citesc de la tastatura  
+	
+	```c
+		printf("Numar muzee: "); 
+		scanf("%d", &numar_muzee);
+	```
+4. Aloc spatiu. Acum stiu cata memorie trebuie sa aloc.
+```c
+	pVectorMuzee=(Muzeu*)malloc(sizeof(Muzeu) * numarMuzee));
+```
 
 
 
@@ -491,11 +508,7 @@ De accea, in tutorialul urmator vom face vector alocat dinamic.
 
 
 
-
-
-
-
-tutorial 10 - Lista Simplu Inlantuita - creare nod - inserare la inceput
+tutorial 12 - Lista Simplu Inlantuita - creare nod - inserare la inceput
 ------------------------------------------------------------------------
 
 Lista spre deosebire de vector nu ocupa o zona contigua de memorie. De aceea pentru a avea acces de la un nod la celalalt, trebuie sa retinem adresa urmatorului nod. La vector nu este nevoie sa se retina adresa urmatorului element deoarece vin unul dupa altul. Ma puteam duce la element direct din memorie.  
