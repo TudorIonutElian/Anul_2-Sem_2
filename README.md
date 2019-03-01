@@ -475,7 +475,7 @@ De accea, in tutorialul urmator vom face vector alocat dinamic.
 
 
 tutorial 10 - Vector alocat dinamic cu obiecte de tip Muzeu
-----------------------------------------------------------
+-----------------------------------------------------------
 
 1. declar un pointer unde o sa pun adresa unde o sa aloc spatiu. Declar un pointer la muzeu, deoarece trebuie sa specific ce fel de adresa o sa am eu acolo. Si o sa am un ``` Muzeu* pVectorMuzee ```.  
 2. Initial il initializez cu NULL  ``` Muzeu* pVectorMuzee = NULL;```.  
@@ -590,7 +590,17 @@ int main() {
 ```
 
 
+tutorial 11 - Matrice alocata dinamic cu elemente de tip Muzeu
+--------------------------------------------------------------
 
+Matrice de muzee  
+
+Daca vrem sa avem o matrice trebuie sa ne declaram un pointer la pointer la muzeu. ```Muzeu**```   
+**De ce pointer la pointer?**   
+Declaram un vector de pointeri. Dupa care la fiecare pointer din vectorul de pointeri, vom declara un vector de muzee.  
+Deci, 
+- primul pointer ``` * ``` va fi pentru adresa unde am vectorul de pointeri.  
+- al doilea pointer ``` * ``` va fi adresa unde am vectorul de elemente de tip Muzeu  
 
 
 
