@@ -602,11 +602,99 @@ Deci,
 - primul pointer ``` * ``` va fi pentru adresa unde am vectorul de pointeri.  
 - al doilea pointer ``` * ``` va fi adresa unde am vectorul de elemente de tip Muzeu  
 
+cod complet tutorial 11
 
+``` c
+#include <iostream>
 
+struct Muzeu {
+	char* nume;
+	float pretBilet;
+	int nrVizitatori;
+};
 
+Muzeu citireMuzeuPrinValoare() {
+	Muzeu muzeu;
 
+	char buffer[20];
+	printf("Nume muzeu: "); scanf("%s", buffer);
+	muzeu.nume = (char*)malloc(sizeof(char)*strlen(buffer) + 1);
+	strcpy(muzeu.nume, buffer);
 
+	printf("Pret bilet: "); scanf("%f", &muzeu.pretBilet);
+	printf("Numar vizitatori: "); scanf("%d", &muzeu.nrVizitatori);
+
+	return muzeu;
+}
+
+void citireMuzeuPrinParametru(Muzeu *pMuzeu) {
+	char buffer[20];
+	printf("Nume muzeu: "); scanf("%s", buffer);
+	pMuzeu->nume = (char*)malloc(sizeof(char)*strlen(buffer) + 1);
+	strcpy(pMuzeu->nume, buffer);
+	printf("Pret bilet: "); scanf("%f", &pMuzeu->pretBilet);
+	printf("Numar vizitatori: "); scanf("%d", &pMuzeu->nrVizitatori);
+}
+
+void afisareMuzeu(Muzeu muzeu) {
+	printf("Muzeul %s are %d vizitatori iar pretul biletului este de %.2f lei", muzeu.nume, muzeu.nrVizitatori, muzeu.pretBilet);
+}
+
+Muzeu** citireMatrice(int *n, int *m) {
+	printf("Numarul de linii: "); scanf("%d", n); // nu mai trebuie sa ii dau adresa lui n, deoarece n este o adresa
+	printf("Numarul de coloane: "); scanf("%d", m);// nu mai trebuie sa ii dau adresa lui m, deoarece n este o adresa
+
+	//declar matricea
+	Muzeu ** matrice;
+	//aloc vectorul de pointer
+	matrice = (Muzeu**)malloc(sizeof(Muzeu*)*(*n)); //trebuie sa dereferentiez n pentru ca n este o adresa: *n
+	//aloc fiecare vector de muzee
+	for (int i = 0; i < *n; i++) {
+		//aloc pt fiecare pointer => matrice[i] este un pointer la muzeu
+		matrice[i] = (Muzeu*)malloc(sizeof(Muzeu)*(*m)); //am alocat pentru fiecare n linii cate m elemente pentru fiecare.
+	}
+	//citesc matricea - o parcurg pe linii si pe coloane
+	for (int i = 0; i < *n; i++) {
+		for (int j = 0; j < *m; j++) {
+			//citesc
+			matrice[i][j] = citireMuzeuPrinValoare();
+		}
+	}
+	return matrice;
+}
+
+int main() {
+	//1. matrice: pointer la pointer la muzeu
+	 /*vector de pointer, apioi la fiecare pointer vector de muzee*/
+	Muzeu** matrice;
+	/*trebuie sa stim numarul de linii si numarul de coloane*/
+	int nrLinii = 0; // numarul de elemente di vectorul de pointeri
+	// pentru fiecare linie trebuie sa stim numarul de elemente de tip muzeu din fiecare vectori
+	int nrColoane = 0;
+	// realize o functi care sa citeasca numarul de linii si de coloane
+	matrice = citireMatrice(&nrLinii, &nrColoane); //transmit numarul de linii prin adresa
+		//afisam matricea
+
+	for (int i = 0; i < nrLinii; i++) {
+		for (int j = 0; j < nrColoane; j++) {
+			afisareMuzeu(matrice[i][j]); printf("\t");
+		}
+		printf("\n");
+	}
+	//dezaloc spatiu
+	//1. dezaloc numele tuturor coloanelor
+	for (int i = 0; i < nrLinii; i++) {
+		for (int j = 0; j < nrColoane; j++) {
+			free(matrice[i][j].nume); //sterg nume
+		}
+		//dezaloc pointer la muzeu
+		free(matrice[i]);
+	}
+	//3. eliberez matricea
+	free(matrice);
+}
+
+```
 
 
 tutorial 12 - Lista Simplu Inlantuita - creare nod - inserare la inceput
