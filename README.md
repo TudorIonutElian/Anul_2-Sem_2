@@ -733,7 +733,97 @@ struct nod {
 };
 ```
 
+cod complet tutorial 12
 
+```c
+#include <iostream>
+
+struct Muzeu {
+	char* nume;
+	float pretBilet;
+	int nrVizitatori;
+};
+
+Muzeu citireMuzeuPrinValoare() {
+	Muzeu muzeu;
+
+	char buffer[20];
+	printf("Nume muzeu: "); scanf("%s", buffer);
+	muzeu.nume = (char*)malloc(sizeof(char)*strlen(buffer) + 1);
+	strcpy(muzeu.nume, buffer);
+
+	printf("Pret bilet: "); scanf("%f", &muzeu.pretBilet);
+	printf("Numar vizitatori: "); scanf("%d", &muzeu.nrVizitatori);
+
+	return muzeu;
+}
+
+void citireMuzeuPrinParametru(Muzeu *pMuzeu) {
+	char buffer[20];
+	printf("Nume muzeu: "); scanf("%s", buffer);
+	pMuzeu->nume = (char*)malloc(sizeof(char)*strlen(buffer) + 1);
+	strcpy(pMuzeu->nume, buffer);
+	printf("Pret bilet: "); scanf("%f", &pMuzeu->pretBilet);
+	printf("Numar vizitatori: "); scanf("%d", &pMuzeu->nrVizitatori);
+}
+
+void afisareMuzeu(Muzeu muzeu) {
+	printf("Muzeul %s are %d vizitatori iar pretul biletului este de %.2f lei", muzeu.nume, muzeu.nrVizitatori, muzeu.pretBilet);
+}
+
+Muzeu** citireMatrice(int *n, int *m) {
+	printf("Numarul de linii: "); scanf("%d", n); // nu mai trebuie sa ii dau adresa lui n, deoarece n este o adresa
+	printf("Numarul de coloane: "); scanf("%d", m);// nu mai trebuie sa ii dau adresa lui m, deoarece n este o adresa
+
+	//declar matricea
+	Muzeu ** matrice;
+	//aloc vectorul de pointer
+	matrice = (Muzeu**)malloc(sizeof(Muzeu*)*(*n)); //trebuie sa dereferentiez n pentru ca n este o adresa: *n
+	//aloc fiecare vector de muzee
+	for (int i = 0; i < *n; i++) {
+		//aloc pt fiecare pointer => matrice[i] este un pointer la muzeu
+		matrice[i] = (Muzeu*)malloc(sizeof(Muzeu)*(*m)); //am alocat pentru fiecare n linii cate m elemente pentru fiecare.
+	}
+	//citesc matricea - o parcurg pe linii si pe coloane
+	for (int i = 0; i < *n; i++) {
+		for (int j = 0; j < *m; j++) {
+			//citesc
+			matrice[i][j] = citireMuzeuPrinValoare();
+		}
+	}
+	return matrice;
+}
+
+struct nod {
+	Muzeu info; //informatia utila
+	nod* next;	//adresa urmatorului nod
+};
+
+// lista e o insiruire de astfel de noduri
+
+//inserare la inceput
+nod* creareNod(Muzeu m, nod* urmator) { //noi avem functia care ne creeaza un nod si ne va returna adresa acestuia
+	nod* nodNou; //creez un nod nou
+	nodNou = (nod*)malloc(sizeof(nod)); //aloc spatiu
+	nodNou->info = m;//setam atributele -> problema: shallow copy +> rezolv cu urmatoarea linie (tratez ce face shallow copy)
+	nodNou->info.nume = (char*)malloc(sizeof(char)*strlen(m.nume) + 1);
+	strcpy(nodNou->info.nume, m.nume);
+	nodNou->next = urmator;
+	return nodNou;//returnam aceasta adresa undea am creat acest nod nou
+}
+
+int main() {
+ /*lista nu ocupa o zona contigua de memorie, de aceea pentru avea acces de la un nod la celalalt trebuie sa retinem adresa celuilalt nod*/
+	//lista e o insiruire de noduri si fiecare lista simplu inlantuita are informatia utila si 
+
+	//imi declar o lista
+		nod* lista = NULL; //avem o lista goala
+
+		lista = creareNod(citireMuzeuPrinValoare(), lista);
+		lista = creareNod(citireMuzeuPrinValoare(), lista); //imi insereaza noul nod la inceput => am inserare la inceput.
+		lista = creareNod(citireMuzeuPrinValoare(), lista); //imi insereaza noul nod la inceput => am inserare la inceput.
+}
+```
 
 
 
