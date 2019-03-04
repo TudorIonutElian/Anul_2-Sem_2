@@ -952,6 +952,135 @@ tutorial 14 - Lista Simplu Inalntuita - Inserare la sfarsit
 ------------------------------------------------------------
 
 
+cod complet tutorial 14
+
+```c
+
+#include <iostream>
+
+struct Muzeu {
+  char* nume;
+  float pretBilet;
+  int nrVizitatori;
+};
+
+Muzeu citireMuzeuPrinValoare() {
+  Muzeu muzeu;
+  
+  char buffer[20];
+  printf("Nume muzeu: "); scanf("%s", buffer);
+  muzeu.nume = (char*)malloc(sizeof(char)*strlen(buffer) + 1);
+  strcpy(muzeu.nume, buffer);
+  
+  printf("Pret bilet: "); scanf("%f", &muzeu.pretBilet);
+  printf("Numar vizitatori: "); scanf("%d", &muzeu.nrVizitatori);
+  
+  return muzeu;
+}
+
+void citireMuzeuPrinParametru(Muzeu *pMuzeu) {
+  char buffer[20];
+  printf("Nume muzeu: "); scanf("%s", buffer);
+  pMuzeu->nume = (char*)malloc(sizeof(char)*strlen(buffer) + 1);
+  strcpy(pMuzeu->nume, buffer);
+  printf("Pret bilet: "); scanf("%f", &pMuzeu->pretBilet);
+  printf("Numar vizitatori: "); scanf("%d", &pMuzeu->nrVizitatori);
+}
+
+void afisareMuzeu(Muzeu muzeu) {
+  printf("Muzeul %s are %d vizitatori iar pretul biletului este de %.2f lei", muzeu.nume, muzeu.nrVizitatori, muzeu.pretBilet);
+}
+
+
+struct nod {
+  Muzeu info; //informatia utila
+  nod* next;  //adresa urmatorului nod
+};
+
+// lista e o insiruire de astfel de noduri
+
+
+//inserare la inceput
+nod* creareNod(Muzeu m, nod* urmator) { //noi avem functia care ne creeaza un nod si ne va returna adresa acestuia
+  nod* nodNou; //creez un nod nou
+  nodNou = (nod*)malloc(sizeof(nod)); //aloc spatiu
+  nodNou->info = m;//setam atributele -> problema: shallow copy +> rezolv cu urmatoarea linie (tratez ce face shallow copy)
+  nodNou->info.nume = (char*)malloc(sizeof(char)*strlen(m.nume) + 1);
+  strcpy(nodNou->info.nume, m.nume);
+  nodNou->next = urmator;
+  return nodNou;//returnam aceasta adresa undea am creat acest nod nou
+}
+
+//primesc ca parametru adresa primului nod
+void afisarelista(nod* cap) {
+  //parcurg toata lista si afisez informatile din fiecare nod
+  while (cap != NULL) {
+    afisareMuzeu(cap->info); //atata timp cat am o adresa la pointerul cap inseamna ca am ce sa afisez, si afisez
+    //duc pointerul la urmatorul element, adresa urmatorului element este cap->next (cap de next)
+    cap = cap->next;
+    printf("\n");
+  }
+}
+
+nod* stergereLista(nod* cap) {
+  while (cap) {
+    free(cap->info.nume);
+    nod* temp = cap;
+    cap = cap->next;
+    free(temp);
+  }
+  return NULL;
+}
+
+nod* inserareSfarsit(nod* cap, Muzeu m){
+  //1. verific daca am sau nu lista, daca pointerul cap are o adresa
+  if (cap){ // daca e diferit de 0 inseamna ca avem o lista
+    //ne ducem la ultimul nod si sa inseram acolo un nou nod.
+    // ca sa ne deplasam la sfarsitul listei nu ne vom deplasa cu cap, trebuie sa ne luam un alt pointer
+    nod* p = cap;
+    while (p->next){ //cat timp exista p-> next, eu ma deplasez
+      p= p->next;
+    }
+    //creez un nou nod si il inserez aici
+    //salvez adresa noului nod in p->next
+    p->next=creareNod(m, NULL);
+    return cap; //adresa primului nod
+  }
+  else {//nu exista cap, cap este null
+    return creareNod(m, NULL); // lista mea va avea un singur nod, creat acums
+  }
+}
+  
+
+int main() {
+  /*lista nu ocupa o zona contigua de memorie, de aceea pentru avea acces de la un nod la celalalt trebuie sa retinem adresa celuilalt nod*/
+  //lista e o insiruire de noduri si fiecare lista simplu inlantuita are informatia utila si
+  
+  //imi declar o lista
+  nod* lista = NULL; //avem o lista goala
+  
+//  lista = creareNod(citireMuzeuPrinValoare(), lista);
+//  lista = creareNod(citireMuzeuPrinValoare(), lista); //imi insereaza noul nod la inceput => am inserare la inceput.
+//  lista = creareNod(citireMuzeuPrinValoare(), lista); //imi insereaza noul nod la inceput => am inserare la inceput.
+//
+//  afisarelista(lista);
+  //dezaloc
+  //1. trec pe la fiecare nod si sterg informatia utila si abia apoi sterg nodurile
+//  s lista = stergereLista(lista);
+  
+  lista = inserareSfarsit(lista, citireMuzeuPrinValoare());
+  lista = inserareSfarsit(lista, citireMuzeuPrinValoare());
+  lista = inserareSfarsit(lista, citireMuzeuPrinValoare());
+  
+  afisarelista(lista);
+  lista=stergereLista(lista);
+}
+
+```
+
+
+----------------
+
 
 -- inserare la mijloc
 while (P-> adr-> info < inf(8)
