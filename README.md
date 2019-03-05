@@ -1078,6 +1078,11 @@ int main() {
 
 ```
 
+tutorial 15 - Lista Dublu Inlantuita - Conceptul de lista dubla
+---------------------------------------------------------------
+Lista dublu inlantuita, pe lanfa **informatia utila** din acel nod si adresa **urmatorului nod** vom avea si adresa **precedentului nod**.
+
+![LDI](https://github.com/CristinaRichter1/Anul_2-Sem_2/blob/master/Imagini%20an%202%20sem%202/LDI.PNG)
 
 ----------------
 
@@ -1110,10 +1115,6 @@ extragere
 1) determinam mai intai nodul, ne oprim exact pe nodul pe care vreau sa il extrag
 2) trebuie sa fac legaturile 
 
-
-tutorial 15 - Lista Dublu Inlantuita - Conceptul de lista dubla
----------------------------------------------------------------
-Lista dublu inlantuita, pe lanfa **informatia utila** din acel nod si adresa **urmatorului nod** vom avea si adresa **precedentului nod**.
 
 Stive si cozi
 -----------------
