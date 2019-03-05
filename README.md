@@ -1080,9 +1080,17 @@ int main() {
 
 tutorial 15 - Lista Dublu Inlantuita - Conceptul de lista dubla
 ---------------------------------------------------------------
-Lista dublu inlantuita, pe lanfa **informatia utila** din acel nod si adresa **urmatorului nod** vom avea si adresa **precedentului nod**.
+Lista dublu inlantuita, pe langa **informatia utila** din acel nod si **adresa urmatorului nod** vom avea si **adresa precedentului nod**.
+
+Acest lucru ne va permite sa facem parcurgerea atat in mod normal cat si sa parcurgem in sens invers, de la sfarsit catre inceput. 
 
 ![LDI](https://github.com/CristinaRichter1/Anul_2-Sem_2/blob/master/Imagini%20an%202%20sem%202/LDI.PNG)
+
+in cazul LDI este nevoie sa salvam adresa primului nod si adresa ultimului nod. Pentru a face acest lucru trebuie sa creem o structura care contine: FIRST: adresa primului nod, si LAST, adresa ultimului nod.  
+Daca este sa am un obiect de acest tip, si vreau sa parcurg lista mea de la inceput spre sfarsit, ma duc la first si parcurg in mod normal, deplasandu-ma cu next.  
+Daca vreau sa parcurg lista in sens invers, de la sfarsit catre inceput, ma duc la last, la ultimul nod si parcurg lista in sens invers, deplasandu-ma cu ajutorul lui prev.  
+
+def: LDI este o insiruire de noduri, in fiecare nod am informatia utila, adresa urmatorului nod cat si adresa nodului precedent. Foarte important este ca acum vom avea o structura pentru informatia utila (pentru nod) si inca o structura pentru informatiile legate de adresele primului si ultimului nod.  
 
 ----------------
 
