@@ -1111,6 +1111,9 @@ extragere
 2) trebuie sa fac legaturile 
 
 
+tutorial 15 - Lista Dublu Inlantuita - Conceptul de lista dubla
+---------------------------------------------------------------
+Lista dublu inlantuita, pe lanfa **informatia utila** din acel nod si adresa **urmatorului nod** vom avea si adresa **precedentului nod**.
 
 Stive si cozi
 -----------------
