@@ -2,7 +2,7 @@
 -------------------------------
 
 
-1. SDD - STRUCTURI DE DATE [info](http://www.acs.ase.ro/data-structures)
+1. SDD - STRUCTURI DE DATE [info](http://www.acs.ase.ro/data-structures) [MD](https://github.com/CristinaRichter1/Anul_2-Sem_2/blob/master/Structuri%20de%20date.md)
 2. PAW - PROGRAMAREA APLICATIILOR WINDOWS [info](http://www.acs.ase.ro/paw)
 3. JAVA [info](http://www.acs.ase.ro/java)
 4. MACROECONOMIE [info]()
