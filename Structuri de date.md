@@ -1565,6 +1565,163 @@ int main() {
 
 ```
 
+tutorial 20 - Lista dublu inlantuita - inserare la sfarsit
+----------------------------------------------------------
+
+```c
+// functie de inserare a unui nou nod la sfarsit
+ListaDubla inserareSfarsit(ListaDubla lista, Avion avion) {
+	nodDublu* nodNou = creareNod(avion, NULL, lista.last);
+	if (lista.last) {
+		lista.last->next = nodNou;
+		lista.last = nodNou;
+	}
+	else {
+		lista.first = nodNou;
+		lista.last = nodNou;
+	}
+	return lista;
+}
+```
+
+cod complet ultimul tutorial
+
+
+```c
+
+#include <iostream>
+
+// pentru informatia utila
+struct Avion {
+	char* numePilot;
+	int numarPasageri;
+};
+
+// structura unui nod
+struct nodDublu {
+	Avion info; //informatia utila
+	nodDublu* next; //adresa nodului urmator
+	nodDublu* prev; //adresa nodului precedent
+};
+
+// structura pentru a retine o LDI
+struct ListaDubla {
+	nodDublu* first;
+	nodDublu* last;
+};
+
+// functie care sa creeze avioane
+Avion creareAvion(const char* numePilot, int numarPasageri) {
+	Avion avion; //creem un avion
+	avion.numePilot = (char*)malloc(sizeof(char)*strlen(numePilot) + 1);  //aloc spatiu pentru nume pilot
+	strcpy(avion.numePilot, numePilot);
+	avion.numarPasageri = numarPasageri;
+	return avion;
+}
+
+// functie care sa creeze un nod
+nodDublu* creareNod(Avion info, nodDublu* next, nodDublu* prev) {
+	nodDublu * nou = (nodDublu*)malloc(sizeof(nodDublu));
+	nou->info = creareAvion(info.numePilot, info.numarPasageri); // ne creem un nod nou
+	nou->next = next;
+	nou->prev = prev;
+	return nou;
+}
+
+// functie de inserare a unui nou nod la inceput
+ListaDubla inserareInceput(ListaDubla lista, Avion avion) {
+	nodDublu* nou = creareNod(avion, lista.first, NULL);
+	if (lista.first) {
+		lista.first->prev = nou;
+		lista.first = nou;
+	}
+	else {
+		lista.first = nou;
+		lista.last = nou;
+	}
+	return lista;
+}
+
+
+// functie de inserare a unui nou nod la sfarsit
+ListaDubla inserareSfarsit(ListaDubla lista, Avion avion) {
+	nodDublu* nodNou = creareNod(avion, NULL, lista.last);
+	if (lista.last) {
+		lista.last->next = nodNou;
+		lista.last = nodNou;
+	}
+	else {
+		lista.first = nodNou;
+		lista.last = nodNou;
+	}
+	return lista;
+}
+// functie afisare avion
+void afisareAvion(Avion avion) {
+	printf("Avionul pilotat de %s are %d pasageri\n", avion.numePilot, avion.numarPasageri);
+}
+
+// functie care sa afiseze toata lista de la inceput spre sfarsit
+void afisareListaInceput(ListaDubla lista) {
+	nodDublu* p = lista.first;
+	while (p) {
+		afisareAvion(p->info);
+		p = p->next;
+	}
+}
+
+// functie care sa afiseze toata lista de la sfarsit spre inceput
+void afisareListaSfarsit(ListaDubla lista) {
+	nodDublu* p = lista.last;
+	while (p) {
+		afisareAvion(p->info);
+		p = p->prev;
+	}
+}
+
+// functie stergere lista
+void stergereLista(ListaDubla * lista) {
+	nodDublu * p = lista->first;
+	while (p) {
+		free(p->info.numePilot);
+		nodDublu * t = p;
+		p = p->next;
+		free(t);
+	}
+	lista->first = NULL;
+	lista->last = NULL;
+
+}
+
+int main() {
+	ListaDubla lista;//declar o LDI
+	// daca am creat aceasta lista am creat 2 pointeri pe care trebuie sa ii initializam
+	lista.first = NULL;
+	lista.last = NULL;
+	//apelez functia creareNod
+	Avion avion1 = creareAvion("Ionescu", 120);
+	Avion avion2 = creareAvion("Georgescu", 130);
+	Avion avion3 = creareAvion("Vasilescu", 140);
+	//lista = inserareInceput(lista, avion1);
+	//lista = inserareInceput(lista, avion2);
+	//lista = inserareInceput(lista, avion3);
+
+	lista = inserareSfarsit(lista, avion1);
+	lista = inserareSfarsit(lista, avion2);
+	lista = inserareSfarsit(lista, avion3);
+
+	afisareListaInceput(lista);
+	printf("\n");
+	afisareListaSfarsit(lista);
+
+	//stergere memorie
+	stergereLista(&lista);
+	free(avion1.numePilot);
+	free(avion2.numePilot);
+	free(avion3.numePilot);
+}
+```
+
 
 SEMINAR
 -------
