@@ -1096,6 +1096,73 @@ def: LDI este o insiruire de noduri, in fiecare nod am informatia utila, adresa 
 
 ----------------
 
+tutorial 16 - Lista Dublu Inlantuita - Structura Avion si crearea unui nod dublu
+--------------------------------------------------------------------------------
+
+cod complet tutorial 16
+```c
+
+//
+//  main.cpp
+//  Avion
+//
+
+#include <iostream>
+
+// pentru informatia utila
+struct Avion{
+    char* numePilot;
+    int numarPasageri;
+};
+
+// structura unui nod
+struct nodDublu{
+    Avion info; //informatia utila
+    nodDublu* next; //adresa nodului urmator
+    nodDublu* prev; //adresa nodului precedent
+};
+
+// structura pentru a retine o LDI
+struct ListaDubla{
+    nodDublu* first;
+    nodDublu* last;
+};
+
+// metoda care sa creeze avioane
+Avion creareAvion (char* numePilot, int numarPasageri){
+    Avion avion; //creem un avion
+    avion.numePilot = (char*)malloc(sizeof(char)*strlen(numePilot)+1);  //aloc spatiu pentru nume pilot
+    strcpy(avion.numePilot, numePilot);
+    avion.numarPasageri = numarPasageri;
+    return avion;
+}
+
+// metoda care sa creeze un nod
+nodDublu* creareNod(Avion info, nodDublu* next, nodDublu* prev){
+    nodDublu * nou = (nodDublu*)malloc(sizeof(nodDublu));
+    nou->info=creareAvion(info.numePilot, info.numarPasageri); // ne creem un nod nou
+    nou->next = next;
+    nou->prev = prev;
+    return nou;
+}
+
+int main() {
+    ListaDubla lista;//declar o LDI
+    // daca am creat aceasta lista am creat 2 pointeri pe care trebuie sa ii initializam
+    lista.first = NULL;
+    lista.last = NULL;
+    // 
+}
+
+```
+
+tutorial 17 - Inserare la inceput
+---------------------------------
+
+
+
+SEMINAR
+-------
 
 -- inserare la mijloc
 while (P-> adr-> info < inf(8)
