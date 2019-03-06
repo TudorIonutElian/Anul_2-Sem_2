@@ -1159,6 +1159,130 @@ int main() {
 tutorial 17 - Inserare la inceput
 ---------------------------------
 
+cod nou + explicatii
+
+```c
+// functie de inserare a unui nou nod la inceput
+/* parametri inserareInceput():
+ 1. lista in care vrem sa inseram: ListaDubla
+ 2. informatia utila pe care vrem sa o inseram: Avion
+ */
+
+//Daca inseram in lista dublu inlantuita o sa modificam pointerul: nodDublu* first;
+//=> va trebui sa returnam noua lista
+
+ListaDubla inserareInceput(ListaDubla lista, Avion avion){
+    
+    //1. creez nod -> indiferent daca avem sau nu nod in lista
+    /*
+     parametri:
+     avion -> informatia utila
+     lista.first -> adresa primului nod initial (pentru ca facem inserare la inceput)
+     NULL -> pentru ca adresa lui prev a noului nod este goala. Noul nod devine primul
+     */
+    nodDublu* nou = creareNod(avion, lista.first, NULL);
+    //2. ce se intampla daca lista este goala?
+    //2.1 verific daca am cel putin un nod in lista
+    //2.1.1 daca am un nod in lista
+    if (lista.first){
+        lista.first->prev = nou; //modific prev, adresa primului nod din null in adresa nodului nou creat
+        lista.first=nou;// modific first, adresa primului nod se schimba cu adresa noului nod creat
+    }
+    else {
+        //2.1.2 daca NU am nod in lista
+        //2.1.2.1 => nu mai trebuie sa fac legatura de la lista.first->prev spre nou pentru ca e NULL deja
+        lista.first=nou;// modific first, adresa primului nod se schimba cu adresa noului nod creat
+        //2.1.2.2 => lista era in precedenta goala asa ca am un singur nod, asa ca valoarea lui last va fi la acelasi nod.
+        lista.last=nou;
+    }
+    return lista;
+}
+
+int main() {
+    ListaDubla lista;//declar o LDI
+    // daca am creat aceasta lista am creat 2 pointeri pe care trebuie sa ii initializam
+    lista.first = NULL;
+    lista.last = NULL;
+    //apelez functia creareNod
+    Avion avion = creareAvion("Ionescu", 120); //1. creez un avion
+    lista = inserareInceput(lista, avion); // inserez acest avion in lista dublu inlantuita
+}
+
+```
+
+cod complet tutorial 17
+
+```c
+//
+//  main.cpp
+//  Avion
+//
+
+#include <iostream>
+
+// pentru informatia utila
+struct Avion{
+    char* numePilot;
+    int numarPasageri;
+};
+
+// structura unui nod
+struct nodDublu{
+    Avion info; //informatia utila
+    nodDublu* next; //adresa nodului urmator
+    nodDublu* prev; //adresa nodului precedent
+};
+
+// structura pentru a retine o LDI
+struct ListaDubla{
+    nodDublu* first;
+    nodDublu* last;
+};
+
+// functie care sa creeze avioane
+Avion creareAvion (char* numePilot, int numarPasageri){
+    Avion avion; //creem un avion
+    avion.numePilot = (char*)malloc(sizeof(char)*strlen(numePilot)+1);  //aloc spatiu pentru nume pilot
+    strcpy(avion.numePilot, numePilot);
+    avion.numarPasageri = numarPasageri;
+    return avion;
+}
+
+// functie care sa creeze un nod
+nodDublu* creareNod(Avion info, nodDublu* next, nodDublu* prev){
+    nodDublu * nou = (nodDublu*)malloc(sizeof(nodDublu));
+    nou->info=creareAvion(info.numePilot, info.numarPasageri); // ne creem un nod nou
+    nou->next = next;
+    nou->prev = prev;
+    return nou;
+}
+
+// functie de inserare a unui nou nod la inceput
+ListaDubla inserareInceput(ListaDubla lista, Avion avion){
+    nodDublu* nou = creareNod(avion, lista.first, NULL);
+    if (lista.first){
+        lista.first->prev = nou;
+        lista.first=nou;
+    }
+    else {
+        lista.first=nou;
+        lista.last=nou;
+    }
+    return lista;
+}
+
+int main() {
+    ListaDubla lista;//declar o LDI
+    // daca am creat aceasta lista am creat 2 pointeri pe care trebuie sa ii initializam
+    lista.first = NULL;
+    lista.last = NULL;
+    //apelez functia creareNod
+    Avion avion = creareAvion("Ionescu", 120);
+    lista = inserareInceput(lista, avion);
+}
+
+
+```
 
 
 SEMINAR
