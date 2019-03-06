@@ -1125,11 +1125,19 @@ extragere
 2) trebuie sa fac legaturile 
 
 
-Stive si cozi
------------------
-stiva (last in first out) ultimul element introdus este primul pe care il scot. Lucrez la un capat. daca fac inserare la inceput fac extragere la inceput; daca fac inserare la sfarsit extragerea o fac tot la sfarsit.
+## Stive si cozi
 
-coada (first in first out) fac inserare la un capat automat extragerea la sfarsit , sau invers.
+STACK / STIVA [LIFO] - last in first out
+----------------------------------------
+stiva (last in first out) 
+- ultimul element introdus este primul pe care il scot. 
+- lucrez la un capat. 
+- daca fac inserare la inceput fac extragere la inceput; 
+- daca fac inserare la sfarsit extragerea o fac tot la sfarsit.
+
+QUEUE / COADA [FIFO] - first in first out
+-----------------------------------------
+coada (first in first out) fac inserare la un capat, automat extragerea la sfarsit , sau invers.
 
 
 23/24 februarie intalnire (ne anunta pe platforma)
